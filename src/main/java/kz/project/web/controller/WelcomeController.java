@@ -2,9 +2,11 @@ package kz.project.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import kz.project.web.config.ServiceLocator;
+import kz.project.web.db.Db;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -37,25 +39,28 @@ public class WelcomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        Db db = new Db();
 
         PrintWriter out = resp.getWriter();
-        String s = "Hello world";
 
-        out.print(s);
+
+        try {
+            out.print(db.getText());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @GetMapping("/")
     public String index(Model model) {
         logger.debug("GO TO ME...");
-        model.addAttribute("msg", getMessage());
+        model.addAttribute("msg", "s");
         model.addAttribute("today", new Date());
         return "index";
 
     }
 
-    private String getMessage() {
-        return "Hello World";
-    }
+
 
 }

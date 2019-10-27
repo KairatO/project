@@ -76,6 +76,12 @@
           <scope>test</scope>
       </dependency>
 
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>10.8.3.0</version>
+    </dependency>
+
       <!-- for web servlet -->
       <dependency>
           <groupId>javax.servlet</groupId>
