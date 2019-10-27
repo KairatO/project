@@ -1,22 +1,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    <head>
+        <title>Click</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).on("click", "#somebutton", function() {
+                $.get("/WelcomeController", function(responseText) {
+                    $("#somediv").text(responseText);
+                });
+            });
+        </script>
+    </head>
 <html>
 <body>
-<script type='text/javascript'>
-$.get(
-  "/WelcomeController",
-  {
-    param1: "param1",
+<button id="somebutton">press here</button>
+        <div id="somediv"></div>
 
-  },
-  onAjaxSuccess
-);
-
-function onAjaxSuccess(data)
-{
-  alert(data);
-}
-</script>
-<h1>${msg}</h1>
-<h2>Today is <fmt:formatDate value="${today}" pattern="yyy-MM-dd" /></h2>
 </body>
 </html>
