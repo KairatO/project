@@ -37,11 +37,11 @@ public class Db {
             stmt.executeUpdate("Create table outputtext (id int primary key, name varchar(30))");
 
 
-            stmt.executeUpdate("insert into outputtext values (1,'Hello World !!!!')");
-            stmt.executeUpdate("insert into outputtext values (2,'Greet-go')");
+            stmt.executeUpdate("insert into outputtext values (1,'Hello World !!!')");
+            stmt.executeUpdate("insert into outputtext values (2,'Greet Go')");
 
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM outputtext WHERE id = 1");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM outputtext WHERE id = 2");
             rs.next();
             String output = rs.getString("name");
 
